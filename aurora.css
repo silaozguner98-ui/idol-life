@@ -1,0 +1,405 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Nunito:wght@500;600;700;800&display=swap");
+
+/* =========================================================
+   IDOL LIFE · Aurora Mesh + Liquid Glass katmanı
+   main.css'ten sonra yüklenir, yalnızca pastel temayı yeniden giydirir.
+   Neon tema olduğu gibi kalır.
+   ========================================================= */
+
+html.pastel{
+  --vanilla:#fbf1d4; --peach:#fbd5c4; --rose:#f7c3cf; --lav:#dfd4f5; --cream:#fbf6f2;
+  --m3:var(--rose); --m4:var(--lav);
+  --apricot-1:#f99b6c; --apricot-2:#f0764b; --lav-accent:#d7c7f5;
+  --g1:#f472b6; --g2:#c084fc; --g-soft:#fce4f1; --g-ink:#b33a7c;
+  --t-mint:#d4f1e1; --t-peach:#fde1cf; --t-lilac:#e9defb; --t-blue:#d8e9fb; --t-pink:#fbd8e7; --t-butter:#fbefc6;
+
+  --text:#3a2a36; --ink:#3a2a36; --text-primary:#3a2a36; --text-secondary:#7a6672; --muted:#7a6672; --ink-soft:#7a6672;
+  --accent:var(--g1); --p-pink:var(--g1); --p-pink-soft:var(--g-soft); --p-lilac:var(--g2); --p-lilac-soft:var(--t-lilac);
+  --p-peach:var(--apricot-2); --p-peach-soft:var(--t-peach); --p-mint-soft:var(--t-mint); --p-sky-soft:var(--t-blue); --p-sun-soft:var(--t-butter);
+  --a-pink:var(--g1); --a-lilac:var(--g2); --a-grad:linear-gradient(100deg,var(--g1),var(--g2));
+  --glass:rgba(255,255,255,.42); --glass-solid:rgba(255,255,255,.66); --glass-line:rgba(255,255,255,.72);
+  --glass-shadow:inset 0 1px 0 rgba(255,255,255,.95), inset 0 -12px 24px -14px rgba(255,255,255,.7), 0 18px 40px -22px rgba(150,86,98,.38);
+  --lg-blur:blur(18px) saturate(1.5);
+  --p-radius:28px;
+  --f-display:"Plus Jakarta Sans","Nunito",system-ui,sans-serif;
+  --serif:"Plus Jakarta Sans","Nunito",system-ui,sans-serif;
+}
+/* Erkek karakter: buz mavisi → kraliyet mavisi */
+html.pastel[data-g="boy"]{ --g1:#38bdf8; --g2:#2563eb; --g-soft:#dcecfc; --g-ink:#1d5fc4; --m3:#cfe2f8; --m4:#dad6f6; }
+
+/* ---------- Aurora mesh zemin ---------- */
+html.pastel body{
+  background:
+    radial-gradient(55vw 50vh at 8% 6%, var(--vanilla) 0%, transparent 70%),
+    radial-gradient(50vw 55vh at 92% 4%, var(--peach) 0%, transparent 72%),
+    radial-gradient(60vw 60vh at 86% 96%, var(--m3) 0%, transparent 70%),
+    radial-gradient(60vw 60vh at 6% 94%, var(--m4) 0%, transparent 70%),
+    linear-gradient(160deg,#fcf5ec,#f9ece8) !important;
+  background-attachment:fixed !important;
+  color:var(--text);
+}
+html.pastel body:before{
+  content:"" !important; pointer-events:none;
+  background:
+    radial-gradient(28vw 28vw at 40% 35%, color-mix(in srgb,var(--peach) 80%,transparent) 0%, transparent 70%),
+    radial-gradient(24vw 24vw at 15% 60%, color-mix(in srgb,var(--m4) 85%,transparent) 0%, transparent 70%),
+    radial-gradient(22vw 22vw at 85% 30%, color-mix(in srgb,var(--vanilla) 90%,transparent) 0%, transparent 70%) !important;
+  filter:blur(30px); opacity:.85;
+  animation:aur-drift 28s ease-in-out infinite alternate;
+}
+@keyframes aur-drift{to{transform:translate(4vw,-3vh) scale(1.08)}}
+
+/* ---------- Tipografi ---------- */
+html.pastel h1,html.pastel h2,html.pastel h3,
+html.pastel .paper h1,html.pastel .paper h2,html.pastel .paper h3,
+html.pastel .view-title h1,html.pastel .clock-character h1,html.pastel .overlay-heading h2,html.pastel .decision-dialog-copy h2{
+  font-family:var(--f-display) !important; color:var(--text) !important; letter-spacing:-.02em !important; text-wrap:balance;
+}
+html.pastel .brand{font-family:var(--f-display);font-weight:800;letter-spacing:.14em}
+html.pastel .brand em{color:transparent;background:linear-gradient(100deg,var(--g1),var(--g2));-webkit-background-clip:text;background-clip:text;animation:none}
+html.pastel .kicker,html.pastel .paper .kicker{color:var(--g-ink)}
+
+/* ---------- Sıvı cam kontroller ---------- */
+html.pastel .site-header,html.pastel .active-game-header{
+  background:rgba(255,255,255,.34) !important; backdrop-filter:var(--lg-blur) !important; -webkit-backdrop-filter:var(--lg-blur) !important;
+  border-bottom:1.2px solid rgba(255,255,255,.72) !important; box-shadow:inset 0 -1px 0 rgba(255,255,255,.5), 0 10px 30px -24px rgba(150,86,98,.5) !important;
+}
+html.pastel .brand-icon,html.pastel .clock-icon{
+  background:linear-gradient(140deg,var(--g1),var(--g2)) !important; border:1.2px solid rgba(255,255,255,.8) !important; color:#fff !important; border-radius:14px !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.6), 0 8px 18px -8px var(--g2) !important;
+}
+html.pastel .nav-link{color:var(--text-secondary) !important;font-weight:700;border-radius:999px;padding:8px 14px !important}
+html.pastel .nav-link:hover{color:var(--text) !important;background:rgba(255,255,255,.5)}
+
+html.pastel .ghost,
+html.pastel .xf-header-actions button,
+html.pastel .star-button,
+html.pastel .icon-button{
+  background:rgba(255,255,255,.4) !important;
+  backdrop-filter:var(--lg-blur); -webkit-backdrop-filter:var(--lg-blur);
+  border:1.2px solid rgba(255,255,255,.72) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.95), inset 0 -8px 16px -10px rgba(255,255,255,.75), 0 8px 20px -12px rgba(150,86,98,.4) !important;
+  color:var(--text) !important; border-radius:999px !important;
+  transition:transform .15s, background .2s, box-shadow .2s !important;
+}
+html.pastel .ghost:hover,html.pastel .ghost[aria-pressed=true],
+html.pastel .xf-header-actions button:hover,html.pastel .star-button:hover,html.pastel .icon-button:hover{
+  background:rgba(255,255,255,.72) !important; color:var(--g-ink) !important;
+}
+html.pastel .ghost:active,html.pastel .star-button:active,html.pastel .icon-button:active{transform:scale(.95)}
+html.pastel .ghost:disabled{opacity:.5}
+html.pastel .star-button{width:36px;height:36px;display:inline-grid;place-items:center;padding:0 !important}
+html.pastel .star-button[aria-pressed=true]{color:var(--apricot-2) !important;background:#fff !important}
+html.pastel .icon-button{width:40px;height:40px;display:inline-grid;place-items:center;padding:0 !important}
+
+/* Ana aksiyon: solda metin, sağda beyaz yuvarlak ok halkası */
+html.pastel .primary{
+  background:linear-gradient(120deg,var(--apricot-1),var(--apricot-2)) !important; color:#fff !important;
+  border:1.2px solid rgba(255,255,255,.55) !important; border-radius:999px !important;
+  font-family:var(--f-display); font-weight:800 !important; font-size:15px;
+  min-height:52px; padding:6px 6px 6px 22px !important; gap:14px !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.45), 0 16px 30px -14px rgba(240,118,75,.65) !important;
+}
+html.pastel .primary > svg,html.pastel .primary > .icon{
+  order:2; width:40px !important; height:40px !important; padding:10px; border-radius:50%;
+  background:#fff; color:var(--apricot-2); box-shadow:0 4px 12px -4px rgba(120,60,40,.35); transition:transform .25s; flex:none;
+}
+html.pastel .primary:not(:has(svg)){padding:6px 22px !important}
+html.pastel .primary:hover{filter:brightness(1.04);transform:translateY(-1px)}
+html.pastel .primary:hover > svg{transform:translateX(3px)}
+html.pastel .primary:active{transform:scale(.97)}
+html.pastel .primary:disabled{opacity:.5;filter:saturate(.6)}
+
+/* ---------- Sekmeler: cam kapsül ---------- */
+html.pastel .game-navigation{background:transparent !important;border:0 !important;box-shadow:none !important;backdrop-filter:none !important}
+html.pastel .game-tabs{
+  margin-top:12px; padding:6px !important; border-radius:999px;
+  background:rgba(255,255,255,.4); backdrop-filter:var(--lg-blur); -webkit-backdrop-filter:var(--lg-blur);
+  border:1.2px solid rgba(255,255,255,.72) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.95), 0 14px 30px -20px rgba(150,86,98,.45);
+}
+html.pastel .game-tabs button{font-family:var(--f-display);font-weight:700 !important;color:var(--text-secondary) !important}
+html.pastel .game-tabs button[aria-current=page]{
+  background:linear-gradient(110deg,var(--g1),var(--g2)) !important; color:#fff !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.45), 0 8px 20px -8px var(--g2) !important;
+}
+
+/* ---------- Kartlar ---------- */
+html.pastel .paper,
+html.pastel .dashboard-grid .paper,html.pastel .dashboard-grid #hayat-kaydi,html.pastel .dashboard-grid .status-panel{
+  background:rgba(255,255,255,.5) !important;
+  backdrop-filter:var(--lg-blur) !important; -webkit-backdrop-filter:var(--lg-blur) !important;
+  border:1.2px solid rgba(255,255,255,.8) !important; border-radius:28px !important;
+  box-shadow:var(--glass-shadow) !important;
+}
+
+/* Saat / profil şeridi: vurgu kartı */
+html.pastel .life-clock{
+  background:linear-gradient(120deg,rgba(255,255,255,.55),rgba(255,255,255,.3)) !important;
+  backdrop-filter:var(--lg-blur); -webkit-backdrop-filter:var(--lg-blur);
+  border:1.2px solid rgba(255,255,255,.8) !important; border-radius:30px !important; box-shadow:var(--glass-shadow) !important;
+}
+html.pastel .clock-character h1{font-size:clamp(22px,2.4vw,30px) !important}
+html.pastel .clock-face strong,html.pastel .clock-face b{font-family:var(--f-display)}
+html.pastel .clock-track{background:rgba(255,255,255,.6) !important;border-radius:99px;overflow:hidden;height:6px}
+html.pastel .clock-track span{background:linear-gradient(90deg,var(--apricot-1),var(--g1)) !important;border-radius:99px}
+html.pastel .segments{
+  background:rgba(255,255,255,.4) !important; border:1.2px solid rgba(255,255,255,.72) !important; border-radius:999px !important; padding:4px !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.95), 0 8px 18px -12px rgba(150,86,98,.45);
+}
+html.pastel .segments button{border:0 !important;background:transparent !important;border-radius:999px !important;color:var(--text-secondary) !important;font-weight:800}
+html.pastel .segments button[aria-pressed=true]{background:#fff !important;color:var(--text) !important;box-shadow:0 6px 14px -8px rgba(120,60,80,.45) !important}
+html.pastel .clock-pause.running{background:linear-gradient(120deg,var(--apricot-1),var(--apricot-2)) !important;color:#fff !important;border-color:rgba(255,255,255,.55) !important}
+
+/* Stat kutuları: büyük, okunaklı rakamlar + küçük yön oku */
+html.pastel .dashboard-overview{background:transparent !important;border:0 !important;box-shadow:none !important;backdrop-filter:none !important;padding:0 !important}
+html.pastel .dashboard-indicators{gap:12px !important}
+html.pastel .dashboard-indicators>div{
+  position:relative; padding:14px 16px !important; border-radius:22px !important; min-height:104px; align-content:space-between;
+  background:rgba(255,255,255,.62) !important; border:1.2px solid rgba(255,255,255,.85) !important; box-shadow:var(--glass-shadow) !important;
+}
+html.pastel .dashboard-indicators>div:nth-child(1){background:linear-gradient(165deg,var(--t-pink),rgba(255,255,255,.7) 75%) !important}
+html.pastel .dashboard-indicators>div:nth-child(2){background:linear-gradient(165deg,var(--t-butter),rgba(255,255,255,.7) 75%) !important}
+html.pastel .dashboard-indicators>div:nth-child(3){background:linear-gradient(165deg,var(--t-mint),rgba(255,255,255,.7) 75%) !important}
+html.pastel .dashboard-indicators>div:nth-child(4){background:linear-gradient(165deg,var(--t-lilac),rgba(255,255,255,.7) 75%) !important}
+html.pastel .dashboard-indicators>div::after{
+  content:""; position:absolute; top:12px; right:12px; width:26px; height:26px; border-radius:9px; background:#fff center/14px no-repeat;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237a6672' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17L17 7M9 7h8v8'/%3E%3C/svg%3E");
+  box-shadow:0 4px 10px -6px rgba(120,60,80,.4);
+}
+html.pastel .dashboard-indicators dt{font-weight:800 !important;color:var(--text-secondary) !important;font-size:12px !important;padding-right:30px}
+html.pastel .dashboard-indicators dd{font-family:var(--f-display) !important;font-weight:500 !important;font-size:clamp(30px,3vw,40px) !important;letter-spacing:-.02em !important;word-spacing:.12em;color:var(--text) !important;font-variant-numeric:tabular-nums}
+html.pastel .dashboard-indicators dd small{font-size:13px;letter-spacing:0;color:#a8949f}
+html.pastel .dashboard-indicators .icon{color:var(--g-ink)}
+
+/* Durum çubukları: yuvarlak, yumuşak */
+html.pastel .xf-meter-bar,html.pastel .meter{background:rgba(255,255,255,.75) !important;border-radius:99px !important;height:10px;overflow:hidden;box-shadow:inset 0 1px 3px rgba(150,86,98,.12)}
+html.pastel .xf-meter-bar span,html.pastel .meter span,html.pastel .meter>i,html.pastel .meter>div{border-radius:99px !important}
+html.pastel .xf-meter-top strong{font-family:var(--f-display);font-size:20px}
+html.pastel .xf-career-badge,html.pastel .xf-trait,html.pastel .diary-kind{
+  border-radius:999px !important; background:#fff !important; color:var(--g-ink) !important; border:0 !important;
+  box-shadow:0 4px 10px -6px rgba(120,60,80,.35); font-weight:800;
+}
+
+/* Hayat kaydı */
+html.pastel .timeline-row{border-radius:20px;transition:background .2s}
+html.pastel .timeline-row:hover{background:rgba(255,255,255,.55)}
+html.pastel .timeline-row h3{font-size:16px !important}
+html.pastel .timeline-row time span{color:var(--g-ink) !important;font-weight:800}
+
+/* Etiketler (chip) */
+html.pastel .xf-gen,html.pastel .gender-options .ghost,html.pastel .filter-chip,html.pastel [class*="chip"]{
+  border-radius:16px !important;
+}
+html.pastel .xf-gen{background:var(--t-lilac) !important;border:1.2px solid rgba(255,255,255,.85) !important;box-shadow:none !important;transition:transform .15s, box-shadow .2s, background .2s}
+html.pastel .xf-gen:nth-of-type(5n+2){background:var(--t-peach) !important}
+html.pastel .xf-gen:nth-of-type(5n+3){background:var(--t-mint) !important}
+html.pastel .xf-gen:nth-of-type(5n+4){background:var(--t-blue) !important}
+html.pastel .xf-gen:nth-of-type(5n+5){background:var(--t-pink) !important}
+html.pastel .xf-gen:hover{transform:translateY(-1px)}
+html.pastel .xf-gen.on{background:#fff !important;box-shadow:0 0 0 2px var(--g1), 0 10px 20px -10px rgba(120,60,80,.4) !important}
+html.pastel .gender-options .ghost:first-child{background:var(--t-pink) !important}
+html.pastel .gender-options .ghost:last-child{background:var(--t-blue) !important}
+html.pastel .gender-options .ghost[aria-pressed=true]{background:#fff !important;box-shadow:0 0 0 2px var(--g1), 0 10px 20px -10px rgba(120,60,80,.4) !important}
+
+/* Form alanları */
+html.pastel input:not([type=checkbox]):not([type=radio]),html.pastel select{
+  background:#fff !important;border:1.2px solid rgba(255,255,255,.95) !important;border-radius:16px !important;color:var(--text) !important;
+  box-shadow:inset 0 2px 6px rgba(150,86,98,.08) !important;
+}
+
+/* ---------- Alt çekmece / pencereler: sıcak krem ---------- */
+html.pastel dialog,html.pastel dialog.story-dialog,html.pastel .budget-dialog{
+  background:var(--cream) !important; border:1.2px solid #fff !important; border-radius:30px !important;
+  box-shadow:0 40px 80px -30px rgba(120,60,80,.5), inset 0 1px 0 #fff !important; color:var(--text) !important;
+}
+html.pastel dialog::backdrop{background:rgba(90,50,74,.18) !important;backdrop-filter:blur(10px) !important;-webkit-backdrop-filter:blur(10px) !important}
+html.pastel dialog[open]{animation:aur-sheet .38s cubic-bezier(.2,.85,.3,1.1)}
+@keyframes aur-sheet{from{opacity:0;transform:translateY(28px)}}
+
+/* Karar penceresi: hafif açılı beyaz kart */
+html.pastel dialog.decision-dialog{
+  background:#fff !important; border-radius:28px !important; transform:none; overflow-x:hidden;
+  box-shadow:0 34px 60px -26px rgba(120,60,80,.45), 14px -12px 0 -2px rgba(255,255,255,.6), -12px 12px 0 -2px rgba(255,255,255,.38) !important;
+}
+html.pastel .decision-dialog-copy{background:transparent !important}
+html.pastel .decision-dialog-copy h2{text-align:center}
+html.pastel .decision-dialog-copy .event-story{background:var(--cream) !important;border:0 !important}
+html.pastel .decision-dialog .choice,html.pastel .choice{
+  background:var(--cream) !important; border:1.2px solid rgba(240,220,215,.9) !important; border-radius:22px !important; color:var(--text) !important;
+}
+html.pastel .decision-dialog .choice:hover:not(:disabled),html.pastel .choice:not(:disabled):hover{background:#fff !important;border-color:var(--g1) !important;transform:translateX(3px) !important}
+html.pastel .choice-index{background:#fff !important;color:var(--g-ink) !important;box-shadow:0 4px 10px -4px rgba(120,60,80,.35)}
+html.pastel .choice>.icon{color:var(--apricot-2)}
+html.pastel .choice-copy .locked{color:#c24b5e}
+
+/* ---------- Giriş (hero) ---------- */
+html.xf-landing.pastel body{background:#1d0a1e !important}
+html.xf-landing.pastel body:before{opacity:0}
+html.pastel .hero h1{font-family:var(--f-display) !important;font-weight:800 !important;letter-spacing:-.035em !important;color:#fff !important;text-shadow:0 4px 30px rgba(59,16,51,.5)}
+html.pastel .hero h1 em{font-style:normal;color:transparent;background:linear-gradient(100deg,#ffb58f,#ff9ccc 55%,#d9b6ff);-webkit-background-clip:text;background-clip:text;animation:none}
+html.pastel .hero-tag{background:rgba(255,255,255,.14) !important;color:#ffd9ea !important;border:1px solid rgba(255,255,255,.28) !important;border-radius:999px !important;backdrop-filter:blur(12px)}
+html.xf-landing.pastel .site-header{background:linear-gradient(180deg,rgba(40,10,36,.55),transparent) !important}
+html.xf-landing.pastel .site-header .ghost,html.xf-landing.pastel .site-header .xf-header-actions button{
+  background:rgba(255,255,255,.12) !important;border:1.2px solid rgba(255,255,255,.35) !important;color:#fff !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35) !important;
+}
+html.xf-landing.pastel .site-header .ghost:hover,html.xf-landing.pastel .site-header .xf-header-actions button:hover{background:rgba(255,255,255,.24) !important}
+html.xf-landing.pastel .roadmap{background:rgba(255,255,255,.7) !important;backdrop-filter:var(--lg-blur)}
+
+/* Giriş sahnesi: solda koyu mürdüm geçiş, cam butonlar */
+html.pastel .idol-hero-overlay{
+  background:
+    radial-gradient(60% 70% at 0% 50%, rgba(59,16,51,.55), transparent 70%),
+    linear-gradient(90deg, rgba(59,16,51,.96) 0%, rgba(74,20,62,.86) 32%, rgba(74,20,62,.34) 56%, rgba(74,20,62,0) 74%) !important;
+}
+html.pastel .idol-hero-headline{font-family:var(--f-display) !important;font-weight:800 !important;letter-spacing:-.035em !important;line-height:.98 !important}
+html.pastel .headline-gradient{background:linear-gradient(100deg,#ffb58f,#ff9ccc 55%,#d9b6ff) !important;-webkit-background-clip:text !important;background-clip:text !important}
+html.pastel .idol-hero-subtitle{color:#f1d9e8 !important;font-weight:600}
+html.pastel .btn-start-primary{
+  background:rgba(255,255,255,.9) !important; color:var(--plum,#3b1033) !important;
+  border:1.2px solid rgba(255,255,255,.95) !important; padding:6px 6px 6px 26px !important; gap:16px !important; min-height:58px;
+  font-family:var(--f-display) !important; box-shadow:inset 0 1px 0 #fff, 0 16px 34px -14px rgba(255,156,204,.75) !important;
+}
+html.pastel .btn-start-primary > span{
+  width:46px; height:46px; border-radius:50%; display:grid; place-items:center; font-size:20px; color:#fff;
+  background:linear-gradient(120deg,var(--apricot-1),var(--apricot-2)); box-shadow:0 6px 14px -6px rgba(240,118,75,.8); transition:transform .25s;
+}
+html.pastel .btn-start-primary:hover > span{transform:translateX(3px)}
+html.pastel .btn-continue-secondary{
+  background:rgba(255,255,255,.12) !important; border:1.2px solid rgba(255,255,255,.4) !important;
+  backdrop-filter:blur(18px) saturate(1.4) !important; -webkit-backdrop-filter:blur(18px) saturate(1.4) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35) !important; min-height:58px;
+}
+html.pastel .btn-continue-secondary:hover{background:rgba(255,255,255,.22) !important}
+@media (max-width:768px){
+  html.pastel .idol-hero-overlay{background:linear-gradient(0deg, rgba(59,16,51,.97) 0%, rgba(74,20,62,.86) 44%, rgba(74,20,62,.2) 76%, transparent 92%) !important}
+  html.pastel .btn-start-primary{justify-content:space-between !important}
+}
+
+/* Erişilebilirlik */
+html.pastel :focus-visible{outline:2.5px solid var(--g2) !important;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){
+  html.pastel body:before{animation:none}
+  html.pastel dialog[open]{animation:none}
+}
+
+/* ---------- Mobil ---------- */
+@media (max-width:760px){
+  /* Yüzen alt menü: tek elle kullanım */
+  html.pastel .game-navigation{background:transparent !important;padding-bottom:calc(12px + env(safe-area-inset-bottom,0px)) !important;height:auto !important}
+  html.pastel .game-tabs{margin:0 12px !important;width:auto !important;border-radius:28px !important;padding:6px !important;
+    background:rgba(255,255,255,.5) !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.95), 0 18px 36px -14px rgba(150,86,98,.55) !important}
+  html.pastel .game-tabs button{border-radius:22px !important;padding:8px 4px !important}
+  html.pastel .dashboard-indicators>div{min-height:88px}
+  html.pastel .dashboard-indicators>div::after{display:none}
+  html.pastel .dashboard-indicators dt{padding-right:0}
+  html.pastel dialog.decision-dialog{transform:none}
+  html.pastel dialog{border-radius:30px 30px 0 0 !important}
+}
+
+/* =========================================================
+   DÜZEN · taslaktaki yerleşim: cam yan menü + üst bilgi barı + iki sütunlu ana sayfa
+   ========================================================= */
+html.pastel.xf-male{ --g1:#38bdf8; --g2:#2563eb; --g-soft:#dcecfc; --g-ink:#1d5fc4; --m3:#cfe2f8; --m4:#dad6f6; }
+html.pastel.xf-male .primary{background:linear-gradient(120deg,var(--apricot-1),var(--apricot-2)) !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.45), 0 16px 30px -14px rgba(240,118,75,.65) !important}
+
+/* Sekme simgeleri (emoji yerine çizgi ikonlar) */
+html.pastel .active-game .game-tabs button{--tab-ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='8'/%3E%3C/svg%3E")}
+html.pastel .active-game .game-tabs button[data-tab=life]{--tab-ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 11l9-7 9 7M5.5 9.5V20h13V9.5M10 20v-5h4v5'/%3E%3C/svg%3E")}
+html.pastel .active-game .game-tabs button[data-tab=skills]{--tab-ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3zM6 11a6 6 0 0 0 12 0M12 17v4'/%3E%3C/svg%3E")}
+html.pastel .active-game .game-tabs button[data-tab=calendar]{--tab-ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6h16v14H4zM4 10h16M8 3v4M16 3v4'/%3E%3C/svg%3E")}
+html.pastel .active-game .game-tabs button[data-tab=phone]{--tab-ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 3h10v18H7zM11 18h2'/%3E%3C/svg%3E")}
+html.pastel .active-game .game-tabs button[data-tab=wallet]{--tab-ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 7h14a2 2 0 0 1 2 2v9H4zM4 7l11-3v3M16 13h2'/%3E%3C/svg%3E")}
+html.pastel .active-game .game-tabs button[data-tab=career]{--tab-ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 4l2.5 5.2 5.5.8-4 3.9 1 5.6-5-2.7-5 2.7 1-5.6-4-3.9 5.5-.8z'/%3E%3C/svg%3E")}
+html.pastel .active-game .game-tabs button[data-tab=relationship]{--tab-ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z'/%3E%3C/svg%3E")}
+html.pastel .active-game .game-tabs button[data-tab=achievements]{--tab-ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M9 20h6'/%3E%3C/svg%3E")}
+html.pastel .active-game .game-tabs button:before{
+  content:"" !important; display:block; width:20px; height:20px; flex:none;
+  background:currentColor; -webkit-mask:var(--tab-ic) center/contain no-repeat; mask:var(--tab-ic) center/contain no-repeat;
+}
+
+/* ---- Masaüstü: yan menü ---- */
+@media (min-width:861px){
+  html.pastel .game-shell.active-game{
+    display:grid; grid-template-columns:236px minmax(0,1fr); gap:18px; align-items:start;
+    padding:16px max(16px,env(safe-area-inset-right,0px)) 28px max(16px,env(safe-area-inset-left,0px));
+  }
+  html.pastel .active-game .game-navigation{position:sticky !important; top:16px; z-index:5; padding:0 !important; margin:0 !important}
+  html.pastel .active-game .game-tabs{
+    width:auto !important; margin:0 !important; overflow:visible !important;
+    flex-direction:column !important; align-items:stretch !important; gap:6px !important;
+    min-height:calc(100vh - 32px); padding:20px 14px !important; border-radius:30px !important;
+  }
+  html.pastel .active-game .game-tabs::before{
+    content:"Menü"; display:block; padding:4px 12px 12px;
+    font:800 11px var(--f-display); letter-spacing:.14em; text-transform:uppercase; color:#a8949f;
+  }
+  html.pastel .active-game .game-tabs button{
+    position:relative; isolation:isolate; flex:0 0 auto !important; min-height:54px !important; min-width:0 !important;
+    display:flex !important; flex-direction:row !important; align-items:center !important; justify-content:flex-start !important; gap:0 !important;
+    padding:8px 12px 8px 60px !important; border-radius:18px !important; text-align:left;
+    font:700 14px var(--f-body) !important; color:var(--text-secondary) !important; background:transparent !important; box-shadow:none !important;
+  }
+  html.pastel .active-game .game-tabs button:after{
+    content:""; position:absolute; left:8px; top:50%; width:38px; height:38px; margin-top:-19px; border-radius:14px; z-index:-1;
+    background:rgba(255,255,255,.6); transition:background .25s;
+  }
+  html.pastel .active-game .game-tabs button:before{position:absolute; left:17px; top:50%; margin-top:-10px}
+  html.pastel .active-game .game-tabs button:hover{background:rgba(255,255,255,.45) !important; color:var(--text) !important}
+  html.pastel .active-game .game-tabs button[aria-current=page]{
+    background:rgba(255,255,255,.82) !important; color:var(--text) !important; box-shadow:0 10px 22px -14px rgba(120,60,80,.45) !important;
+  }
+  html.pastel .active-game .game-tabs button[aria-current=page]:after{background:linear-gradient(135deg,var(--g1),var(--g2))}
+  html.pastel .active-game .game-tabs button[aria-current=page]:before{background:#fff}
+  html.pastel .active-game .game-tabs .notification{transform:none !important; left:36px; top:4px}
+
+  html.pastel .active-game .game-frame{width:auto !important; max-width:none !important; margin:0 !important; min-width:0}
+  html.pastel .active-game .life-clock{margin-top:0 !important}
+}
+
+/* ---- Geniş ekran: ana sayfa iki sütun (solda kartlar + durum, sağda Hayat Kaydı) ---- */
+@media (min-width:1101px){
+  html.pastel .active-game .dashboard-grid{
+    grid-template-columns:minmax(0,1fr) 300px !important;
+    grid-template-areas:"overview status" "feed status"; grid-template-rows:auto 1fr; align-items:start;
+  }
+  html.pastel .active-game .dashboard-grid > .main-view,
+  html.pastel .active-game .dashboard-grid .life-timeline-view{display:contents !important}
+  html.pastel .active-game .dashboard-grid .dashboard-overview{grid-area:overview}
+  html.pastel .active-game .dashboard-grid #hayat-kaydi{grid-area:feed; position:sticky; top:16px; max-height:calc(100vh - 32px); display:flex; flex-direction:column}
+  html.pastel .active-game .dashboard-grid > .side-rail{grid-area:status; position:static !important}
+  html.pastel .active-game .dashboard-grid #hayat-kaydi{height:calc(100vh - 210px);min-height:520px;top:16px}
+  html.pastel .active-game .dashboard-grid #hayat-kaydi .timeline{max-height:none !important; flex:1 1 auto; min-height:0}
+  html.pastel .active-game .dashboard-grid #hayat-kaydi .timeline .timeline-row{grid-template-columns:minmax(0,1fr) auto !important; row-gap:2px !important}
+  html.pastel .active-game .dashboard-grid #hayat-kaydi .timeline .timeline-row > time{grid-column:1; grid-row:1; width:auto !important; display:flex !important; gap:8px; white-space:nowrap; align-items:baseline; flex-direction:row !important}
+  html.pastel .active-game .dashboard-grid #hayat-kaydi .timeline .timeline-row > div{grid-column:1 / -1; grid-row:2}
+  html.pastel .active-game .dashboard-grid #hayat-kaydi .timeline .timeline-row > .star-button{grid-column:2; grid-row:1}
+}
+html.pastel .dashboard-indicators dt{white-space:normal !important; overflow:visible !important; text-overflow:clip !important; line-height:1.25}
+
+/* Ana sayfa vurgu kartları: kayısı + lavanta + mint */
+html.pastel .active-game .dashboard-indicators>div:nth-child(1){
+  background:linear-gradient(150deg,var(--apricot-1),var(--apricot-2)) !important; border-color:rgba(255,255,255,.55) !important;
+  box-shadow:0 22px 40px -22px rgba(240,118,75,.75) !important;
+}
+html.pastel .active-game .dashboard-indicators>div:nth-child(1) dt,
+html.pastel .active-game .dashboard-indicators>div:nth-child(1) dd,
+html.pastel .active-game .dashboard-indicators>div:nth-child(1) dd small,
+html.pastel .active-game .dashboard-indicators>div:nth-child(1) .icon{color:#fff !important}
+html.pastel .active-game .dashboard-indicators>div:nth-child(1) > svg.icon{color:var(--apricot-2) !important}
+html.pastel .active-game .dashboard-indicators dt{text-align:left !important;justify-self:start !important}
+html.pastel .active-game .dashboard-indicators>div:nth-child(2){
+  background:linear-gradient(160deg,var(--lav-accent),#c9b6f0) !important; border-color:rgba(255,255,255,.6) !important;
+  box-shadow:0 22px 40px -22px rgba(140,110,210,.7) !important;
+}
+html.pastel .active-game .dashboard-indicators>div:nth-child(2) dt,
+html.pastel .active-game .dashboard-indicators>div:nth-child(2) dd,
+html.pastel .active-game .dashboard-indicators>div:nth-child(2) .icon{color:#3d2d5c !important}
+html.pastel .active-game .dashboard-indicators>div{min-height:132px}
+
+/* Mobil: ikonlu yüzen alt menü */
+@media (max-width:860px){
+  html.pastel .active-game .game-tabs button:before{width:22px;height:22px}
+  html.pastel .active-game .game-tabs button[aria-current=page]:before{background:#fff}
+}
