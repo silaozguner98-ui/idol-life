@@ -1,15 +1,15 @@
 /* IDOL LIFE · çevrimdışı çalışma
    Site güncellendiğinde VERSION'ı (ve index.html'deki ?v= değerlerini) birlikte artır. */
-const VERSION = "v37";
+const VERSION = "v38";
 const CACHE = "idol-life-" + VERSION;
 const CORE = [
   "./",
   "./index.html",
-  "./main.js?v=37",
-  "./main.css?v=37",
-  "./aurora.css?v=37",
-  "./aurora-cards.css?v=37",
-  "./aurora.js?v=37",
+  "./main.js?v=38",
+  "./main.css?v=38",
+  "./aurora.css?v=38",
+  "./aurora-cards.css?v=38",
+  "./aurora.js?v=38",
   "./hero.webp",
   "./manifest.webmanifest",
   "./icons/icon-192.png",
