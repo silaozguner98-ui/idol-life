@@ -493,3 +493,41 @@ html .personality-panel>summary::after{content:"Gizle ▴";font-size:12px;font-w
 html .personality-panel:not([open])>summary::after{content:"Göster ▾"}
 html .personality-panel:not([open]){padding-bottom:4px !important}
 @media (max-width:860px){html.pastel .personality-panel>summary{font-size:20px !important}}
+
+/* =========================================================
+   v36 · Telefonda ekrana sığdır: küçük yazı, sıkı aralıklar
+   ========================================================= */
+@media (max-width:860px){
+  /* Oyun içeriğinin tamamı %86 ölçekte */
+  html body .active-game .game-frame{zoom:.86}
+  html body .active-game-header{zoom:.86}
+  html body .active-game .game-navigation{zoom:.9}
+  html body dialog{zoom:.9}
+
+  /* Paneller arası boşluklar */
+  html .active-game .game-grid,html .active-game .dashboard-grid{gap:10px !important}
+  html .active-game .paper,html .active-game .view-panel{padding:14px !important;margin-bottom:10px !important}
+  html .active-game .view-title{margin-bottom:8px !important}
+  html .active-game .view-title h1{font-size:20px !important}
+  html .active-game .xf-fold-head{min-height:44px !important}
+  html .active-game .xf-fold-head h1,html .active-game .xf-fold-head h2{font-size:18px !important;margin:0 !important}
+  html .active-game .view-panel p{line-height:1.4 !important}
+
+  /* Hayat Kaydı: sayfayı uzatmasın, kendi içinde kaysın */
+  html .active-game #hayat-kaydi .timeline{max-height:58vh !important;overflow-y:auto !important;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+  html .active-game #hayat-kaydi{max-height:none !important}
+
+  /* Başarılar: sıkı ızgara */
+  html .active-game .xf-ach-view ul,html .active-game .xf-ach-view .xf-ach-grid{gap:8px !important}
+
+  /* Menü + Hızlı düğmesi için alt boşluk (ölçek sonrası) */
+  body.xm-game .active-game .game-frame{padding-bottom:130px !important}
+}
+@media (max-width:860px){
+  html dialog .decision-dialog-copy p,html dialog .decision-dialog-copy > div{font-size:14px !important;line-height:1.45 !important;padding:12px 14px !important}
+  html dialog .decision-dialog-copy h2{font-size:21px !important;margin:6px 0 !important}
+  html dialog .choices{gap:8px !important}
+  html dialog .choices .choice{padding:10px 12px !important;min-height:0 !important;border-radius:16px !important}
+  html dialog .choice-copy strong,html dialog .choice-copy b{font-size:15px !important;line-height:1.25 !important}
+  html dialog .choice-copy small,html dialog .choice-copy p,html dialog .choice-copy span:not(.choice-index){font-size:12.5px !important;line-height:1.35 !important}
+}

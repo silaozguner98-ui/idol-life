@@ -191,3 +191,17 @@
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
 })();
+
+/* ===== v36: Telefonda uzun bölümler ilk açılışta kapalı gelsin (bir kez) ===== */
+(function(){
+  try{
+    if (!window.matchMedia("(max-width:860px)").matches) return;
+    var FLAG = "idol-life.tr.mfold.v36";
+    if (localStorage.getItem(FLAG)) return;
+    ["dev","dyn","prac","rest","acting","courses","xfp-body","xfp-debt","xfp-home","xfp-jobs","career","mind","tree","family","shop","beauty","studio","eco","xfp-cofound","xfp-ags"].forEach(function(id){
+      var k = "idol-life.tr.fold." + id;
+      if (localStorage.getItem(k) === null) localStorage.setItem(k, "0");
+    });
+    localStorage.setItem(FLAG, "1");
+  }catch(e){}
+})();
