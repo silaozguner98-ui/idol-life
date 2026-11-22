@@ -334,3 +334,155 @@ html.pastel .active-game .game-tabs button[data-tab=myagency]{--tab-ic:url("data
   html.pastel .active-game .dashboard-indicators dd{font-size:20px !important;line-height:1.1;margin:0 !important;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
   html.pastel .active-game .dashboard-indicators dd small{font-size:10px !important}
 }
+
+/* =========================================================
+   MOBİL KOLAYLIK (v33): kompakt üst kart, sade Durum,
+   "Daha" menüsü, Hızlı işlemler, büyük dokunma alanları
+   ========================================================= */
+@media (max-width:860px){
+  /* --- Üst başlık: daha ince --- */
+  html .active-game-header .header-inner{padding-block:6px !important;min-height:0 !important}
+  html .active-game-header .brand-icon{width:30px !important;height:30px !important}
+
+  /* --- Saat kartı: tek bakışta isim, yaş, oynat/hız --- */
+  html .active-game .life-clock{border-radius:20px !important;margin-bottom:10px !important}
+  html .active-game .life-clock .xf-scenery{display:none !important}
+  html .active-game .clock-inner{
+    grid-template-columns:42px minmax(0,1fr) auto !important;
+    grid-template-areas:"avatar character face" "controls controls controls" !important;
+    padding:10px 12px !important;row-gap:8px !important;column-gap:10px !important;min-height:0 !important;align-items:center !important}
+  html .active-game .xf-avatar{width:42px !important;height:42px !important}
+  html .active-game .clock-character h1{font-size:18px !important;line-height:1.15 !important;margin:0 !important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  html .active-game .clock-character > p{font-size:12px !important;margin:1px 0 0 !important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  html .active-game .xf-clock-facts{display:flex !important;flex-wrap:nowrap !important;gap:5px !important;overflow-x:auto;scrollbar-width:none;margin-top:5px !important;padding:0 !important;border:0 !important}
+  html .active-game .xf-clock-facts::-webkit-scrollbar{display:none}
+  html .active-game .xf-clock-facts > span{flex:0 0 auto;white-space:nowrap;font-size:11px !important;line-height:1 !important;padding:5px 8px !important;border:0 !important;border-radius:99px !important;background:rgba(255,255,255,.66) !important;margin:0 !important}
+  html .active-game .xf-clock-facts > span::before,html .active-game .xf-clock-facts > span::after{display:none !important}
+  html .active-game .xf-clock-facts b{font-size:11px !important}
+  html .active-game .clock-face{text-align:right !important}
+  html .active-game .clock-face *{font-size:13px !important;line-height:1.25 !important}
+  html .active-game .clock-face strong,html .active-game .clock-face b{font-size:15px !important}
+  html .active-game .clock-controls{display:flex !important;gap:8px !important;align-items:center !important}
+  html .active-game .clock-controls .clock-pause{min-height:38px !important;padding:0 14px !important;flex:0 0 auto;font-size:14px !important}
+  html .active-game .clock-controls .segments{flex:1 1 auto;display:flex !important;min-height:38px !important}
+  html .active-game .clock-controls .segments button{flex:1 1 0;min-height:34px !important;font-size:13px !important}
+
+  /* --- Durum: 2 sütun, sadece ad + değer + çubuk --- */
+  html .active-game .status-panel{padding:14px !important}
+  html .active-game .status-panel .xf-meters{display:grid !important;grid-template-columns:1fr 1fr !important;gap:12px 14px !important}
+  html .active-game .xf-meter{margin:0 !important;padding:0 !important}
+  html .active-game .xf-meter-top{align-items:baseline !important;gap:6px !important;margin-bottom:5px !important}
+  html .active-game .xf-meter-top small{display:none !important}
+  html .active-game .xf-meter-top b{font-size:12.5px !important;line-height:1.2 !important}
+  html .active-game .xf-meter-top strong{font-size:17px !important}
+  html .active-game .xf-meter-bar{height:7px !important}
+  html .active-game .status-panel .panel-heading h2{font-size:20px !important}
+
+  /* --- Dokunma alanları --- */
+  html .active-game .view-panel button,html .active-game .status-panel button{min-height:40px}
+  html .active-game .xf-fold-head{min-height:48px;display:flex;align-items:center}
+
+  /* --- Alt menü: "Daha" düğmesine yer aç --- */
+  body.xm-game.xm-has-more .active-game .game-tabs{padding-right:calc(20% + 4px) !important;overflow:hidden !important}
+  body.xm-game .active-game .game-tabs button[data-xm-hidden]{display:none !important}
+  body.xm-game.xm-has-more .active-game .game-tabs button{flex:1 1 0 !important;min-width:0 !important}
+  body.xm-game .active-game .game-tabs button{font-size:11.5px !important;white-space:nowrap}
+
+  /* --- Sayfa altında menü + hızlı düğme için boşluk --- */
+  body.xm-game .active-game .game-frame{padding-bottom:150px !important}
+}
+
+/* "Daha" düğmesi */
+.xm-more,.xm-fab,.xm-sheet,.xm-scrim{display:none}
+@media (max-width:860px){
+  body.xm-game.xm-has-more .xm-more{
+    display:flex;position:fixed;z-index:60;width:calc((100vw - 24px) * .2 - 4px);
+    flex-direction:column;align-items:center;justify-content:center;gap:3px;
+    border:0;border-radius:22px;background:transparent;color:var(--text-secondary,#7b6470);
+    font:700 11.5px/1.1 var(--f-display,inherit);cursor:pointer}
+  body.xm-game .xm-more .xm-ic{width:22px;height:22px;background:currentColor;
+    -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='5' cy='12' r='2.2'/%3E%3Ccircle cx='12' cy='12' r='2.2'/%3E%3Ccircle cx='19' cy='12' r='2.2'/%3E%3C/svg%3E") center/contain no-repeat;
+            mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='5' cy='12' r='2.2'/%3E%3Ccircle cx='12' cy='12' r='2.2'/%3E%3Ccircle cx='19' cy='12' r='2.2'/%3E%3C/svg%3E") center/contain no-repeat}
+  body.xm-game .xm-more .xm-lb{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 4px}
+  body.xm-game .xm-more.on{background:linear-gradient(135deg,var(--g1,#f08fb0),var(--g2,#c39af0));color:#fff;box-shadow:0 10px 22px -12px rgba(160,70,120,.7)}
+
+  /* Hızlı işlemler düğmesi */
+  body.xm-game .xm-fab{
+    display:flex;position:fixed;z-index:59;right:16px;bottom:96px;height:52px;padding:0 18px 0 14px;gap:6px;
+    align-items:center;border:0;border-radius:26px;cursor:pointer;color:#fff;
+    font:800 15px/1 var(--f-display,inherit);
+    background:linear-gradient(135deg,var(--g1,#f08fb0),var(--g2,#c39af0));
+    box-shadow:0 14px 28px -12px rgba(150,60,120,.75),0 0 0 3px rgba(255,255,255,.75)}
+  body.xm-game .xm-fab span:first-child{font-size:18px}
+  body.xm-open .xm-fab,body.xm-open .xm-more{visibility:hidden}
+  html body:has(dialog[open]) .xm-fab{display:none}
+
+  /* Alttan açılan sayfa */
+  body.xm-open .xm-scrim{display:block;position:fixed;inset:0;z-index:70;background:rgba(40,20,35,.38);backdrop-filter:blur(2px);animation:xm-fade .18s ease}
+  body.xm-open .xm-sheet{
+    display:block;position:fixed;z-index:71;left:0;right:0;bottom:0;max-height:78vh;overflow:auto;
+    padding:10px 16px calc(18px + env(safe-area-inset-bottom));
+    border-radius:26px 26px 0 0;background:var(--surface,#fff8fb);
+    box-shadow:0 -18px 40px -20px rgba(120,50,90,.5);animation:xm-up .22s cubic-bezier(.2,.8,.2,1)}
+  .xm-sheet-head{display:flex;align-items:center;justify-content:space-between;padding:6px 2px 12px;position:relative}
+  .xm-sheet-head::before{content:"";position:absolute;left:50%;top:-4px;width:40px;height:4px;margin-left:-20px;border-radius:4px;background:rgba(120,80,100,.25)}
+  .xm-sheet-head b{font:800 18px/1.2 var(--f-display,inherit);color:var(--text,#3a2431)}
+  .xm-x{width:40px;height:40px;border:0;border-radius:50%;background:rgba(0,0,0,.05);font-size:16px;cursor:pointer;color:inherit}
+  .xm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .xm-tile{display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 6px;border:0;border-radius:18px;
+    background:rgba(255,255,255,.85);box-shadow:0 6px 16px -12px rgba(120,60,90,.5);font:700 13px/1.15 var(--f-display,inherit);color:var(--text,#3a2431);cursor:pointer}
+  .xm-tile.on{background:linear-gradient(135deg,var(--g1,#f08fb0),var(--g2,#c39af0));color:#fff}
+  .xm-tile-ic{width:26px;height:26px;background:currentColor;-webkit-mask:var(--tab-ic) center/contain no-repeat;mask:var(--tab-ic) center/contain no-repeat}
+  .xm-list{display:flex;flex-direction:column;gap:8px}
+  .xm-row{display:flex;align-items:center;gap:12px;width:100%;min-height:60px;padding:10px 14px;border:0;border-radius:18px;text-align:left;cursor:pointer;
+    background:rgba(255,255,255,.88);box-shadow:0 6px 16px -12px rgba(120,60,90,.5);color:var(--text,#3a2431)}
+  .xm-row:active,.xm-tile:active{transform:scale(.98)}
+  .xm-row-ic{flex:0 0 40px;height:40px;display:grid;place-items:center;font-size:21px;border-radius:12px;background:rgba(240,143,176,.14)}
+  .xm-row-tx{flex:1;display:flex;flex-direction:column;gap:2px;min-width:0}
+  .xm-row-tx b{font:800 15px/1.2 var(--f-display,inherit)}
+  .xm-row-tx small{font-size:12px;color:var(--text-secondary,#8a7380)}
+  .xm-row-go{font-size:24px;color:var(--text-secondary,#8a7380)}
+}
+html.neon body.xm-open .xm-sheet{background:#1d1426}
+html.neon .xm-tile,html.neon .xm-row{background:rgba(255,255,255,.07);color:#f3e8f5}
+html.neon .xm-sheet-head b{color:#f3e8f5}
+
+/* Sekme ikonları "Daha" sayfasında da görünsün */
+.xm-tile-ic[data-tab-ic=phone]{--tab-ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 3h10v18H7zM11 18h2'/%3E%3C/svg%3E")}
+.xm-tile-ic[data-tab-ic=study]{--tab-ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20M8 7h8M8 11h6'/%3E%3C/svg%3E")}
+.xm-tile-ic[data-tab-ic=wallet]{--tab-ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 7h14a2 2 0 0 1 2 2v9H4zM4 7l11-3v3M16 13h2'/%3E%3C/svg%3E")}
+.xm-tile-ic[data-tab-ic=career]{--tab-ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 4l2.5 5.2 5.5.8-4 3.9 1 5.6-5-2.7-5 2.7 1-5.6-4-3.9 5.5-.8z'/%3E%3C/svg%3E")}
+.xm-tile-ic[data-tab-ic=relationship]{--tab-ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z'/%3E%3C/svg%3E")}
+.xm-tile-ic[data-tab-ic=achievements]{--tab-ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M9 20h6'/%3E%3C/svg%3E")}
+.xm-tile-ic[data-tab-ic=myagency]{--tab-ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 21V5l8-3 8 3v16M9 21v-5h6v5'/%3E%3C/svg%3E")}
+.xm-tile-ic[data-tab-ic=skills]{--tab-ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3zM6 11a6 6 0 0 0 12 0M12 17v4'/%3E%3C/svg%3E")}
+
+/* Hedef bölüm kısa süre parlasın */
+.xm-flash{animation:xm-flash 1.3s ease}
+@keyframes xm-flash{0%,100%{box-shadow:inherit}25%{box-shadow:0 0 0 4px rgba(240,143,176,.65),0 18px 40px -18px rgba(200,80,140,.6)}}
+@keyframes xm-up{from{transform:translateY(100%)}to{transform:none}}
+@keyframes xm-fade{from{opacity:0}to{opacity:1}}
+
+/* Mobil: kompakt eylem kartları ve beceri halkaları */
+@media (max-width:860px){
+  html .active-game .xf-prac-grid{gap:10px !important;grid-template-columns:1fr !important}
+  html .active-game .xf-prac-card{
+    display:grid !important;grid-template-columns:minmax(0,1fr) auto !important;
+    grid-template-areas:"t f" "g f" !important;align-items:center !important;
+    gap:3px 12px !important;padding:12px 14px !important;min-height:0 !important;border-radius:18px !important}
+  html .active-game .xf-prac-card > h3{grid-area:t;font-size:15px !important;line-height:1.25 !important;margin:0 !important}
+  html .active-game .xf-prac-card > p{display:none !important}
+  html .active-game .xf-prac-card > small{grid-area:g;font-size:11.5px !important;line-height:1.3 !important;margin:0 !important}
+  html .active-game .xf-prac-card > :not(h3):not(p):not(small):not(.xf-prac-foot){grid-column:1 / -1}
+  html .active-game .xf-prac-card .xf-prac-foot{grid-area:f;display:flex !important;flex-direction:column !important;align-items:flex-end !important;gap:4px !important;margin:0 !important;padding:0 !important;border:0 !important}
+  html .active-game .xf-prac-card .xf-prac-cost{font-size:11px !important}
+  html .active-game .xf-prac-card .xf-prac-foot button{min-height:40px !important;padding:0 14px !important;font-size:13px !important;white-space:nowrap}
+  html .active-game .xf-prac-panel > p,html .active-game .xf-prac-panel .xf-fold-head + p{font-size:12px !important}
+
+  html.pastel .active-game .main-view .skill-grid,html.neon .active-game .main-view .skill-grid{grid-template-columns:repeat(3,minmax(0,1fr)) !important;gap:8px !important}
+  html.pastel .active-game .main-view .skill-row .skill-meter{width:64px !important;height:64px !important}
+  html .active-game .main-view .skill-row b{font-size:20px !important}
+  html .active-game .skill-grid .skill-row{padding:10px 6px !important;min-height:0 !important;border-radius:16px !important;gap:4px !important}
+  html .active-game .skill-grid .skill-row > span{font-size:12px !important}
+  html .active-game .skill-grid .skill-row small{font-size:10px !important;line-height:1.2 !important;text-align:center}
+}
