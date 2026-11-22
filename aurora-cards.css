@@ -322,3 +322,15 @@ html.pastel .active-game .game-tabs button[data-tab=myagency]{--tab-ic:url("data
 .xfp-ag-stats small{display:block;font-size:10.5px;color:#9a8592}.xfp-ag-stats b{font-size:12.5px;color:#4a3848}
 .xfp-ag-pros{color:#2f8a5f!important}.xfp-ag-cons{color:#c9405a!important}
 .xfp-co-view h3{margin:14px 0 6px;font:800 15px var(--f-display,inherit)}
+
+/* Mobil: sekme içeriği öne, Durum yalnızca Ana Sayfa'da; üst kartlar kompakt */
+@media (max-width:860px){
+  html body:not(:has(.game-tabs [data-tab="life"][aria-current="page"])) .active-game .game-grid .status-panel{display:none !important}
+  html.pastel .active-game .dashboard-indicators{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr)) !important;gap:8px !important}
+  html.pastel .active-game .dashboard-indicators>div{min-height:0 !important;padding:9px 10px !important;border-radius:16px !important;display:flex !important;flex-direction:column !important;align-items:flex-start !important;gap:2px !important;grid-column:auto !important}
+  html.pastel .active-game .dashboard-indicators>div>svg.icon,html.pastel .active-game .dashboard-indicators>div>.icon{display:none !important}
+  html.pastel .active-game .dashboard-indicators>div::after{display:none !important}
+  html.pastel .active-game .dashboard-indicators dt{font-size:11px !important;padding:0 !important;line-height:1.2;white-space:nowrap !important;overflow:hidden !important;text-overflow:ellipsis !important;max-width:100%}
+  html.pastel .active-game .dashboard-indicators dd{font-size:20px !important;line-height:1.1;margin:0 !important;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+  html.pastel .active-game .dashboard-indicators dd small{font-size:10px !important}
+}
