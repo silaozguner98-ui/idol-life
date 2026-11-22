@@ -486,3 +486,10 @@ html.neon .xm-sheet-head b{color:#f3e8f5}
   html .active-game .skill-grid .skill-row > span{font-size:12px !important}
   html .active-game .skill-grid .skill-row small{font-size:10px !important;line-height:1.2 !important;text-align:center}
 }
+
+/* Kişilik paneli: dokununca aç / kapat */
+html .personality-panel>summary{cursor:pointer !important;display:flex !important;align-items:center;justify-content:space-between;gap:10px;min-height:44px;user-select:none;-webkit-tap-highlight-color:transparent}
+html .personality-panel>summary::after{content:"Gizle ▴";font-size:12px;font-weight:700;color:var(--text-secondary,#8a7380);padding:6px 10px;border-radius:99px;background:rgba(255,255,255,.7);white-space:nowrap}
+html .personality-panel:not([open])>summary::after{content:"Göster ▾"}
+html .personality-panel:not([open]){padding-bottom:4px !important}
+@media (max-width:860px){html.pastel .personality-panel>summary{font-size:20px !important}}
