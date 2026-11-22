@@ -531,3 +531,7 @@ html .personality-panel:not([open]){padding-bottom:4px !important}
   html dialog .choice-copy strong,html dialog .choice-copy b{font-size:15px !important;line-height:1.25 !important}
   html dialog .choice-copy small,html dialog .choice-copy p,html dialog .choice-copy span:not(.choice-index){font-size:12.5px !important;line-height:1.35 !important}
 }
+
+/* v37: profil kartı avatarı çerçeve içinde kalsın */
+html .xf-pcard-art{overflow:hidden !important}
+html .xf-pcard-art svg{overflow:hidden !important;width:100% !important;height:100% !important}

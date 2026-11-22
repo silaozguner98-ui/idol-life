@@ -205,3 +205,38 @@
     localStorage.setItem(FLAG, "1");
   }catch(e){}
 })();
+
+/* ===== v37: Profil kartındaki avatar çerçeveye tam sığsın ===== */
+(function(){
+  var busy = false;
+  function fit(){
+    busy = false;
+    var list = document.querySelectorAll(".xf-pcard-art svg");
+    for (var i = 0; i < list.length; i++){
+      var s = list[i];
+      try{
+        var cur = s.getAttribute("viewBox");
+        if (cur && cur === s.getAttribute("data-xf-fit")) continue;
+        var b = s.getBBox();
+        if (!b || !b.width || !b.height) continue;
+        var pad = Math.max(b.width, b.height) * 0.04;
+        var vb = [b.x - pad, b.y - pad, b.width + pad * 2, b.height + pad * 2].map(function(n){ return Math.round(n * 10) / 10; }).join(" ");
+        s.setAttribute("viewBox", vb);
+        s.setAttribute("preserveAspectRatio", "xMidYMid meet");
+        s.setAttribute("data-xf-fit", vb);
+      }catch(e){}
+    }
+  }
+  function sched(){ if (!busy){ busy = true; setTimeout(fit, 30); } }
+  function start(){
+    new MutationObserver(function(ms){
+      for (var i = 0; i < ms.length; i++){
+        var t = ms[i].target;
+        if (t && t.closest && (t.closest(".xf-pcard") || (t.querySelector && t.querySelector(".xf-pcard")))) { sched(); return; }
+        if (ms[i].addedNodes && ms[i].addedNodes.length) { sched(); return; }
+      }
+    }).observe(document.body, {childList:true, subtree:true, attributes:true, attributeFilter:["viewBox"]});
+    sched();
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
+})();
